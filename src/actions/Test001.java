@@ -3,7 +3,8 @@ package actions;
 import java.util.*;
 
 class Test001{
-    public static void main(String[] args) {
+    @Test
+    void hw() {
         Systeme.out.println("hello world");
     }
 }
