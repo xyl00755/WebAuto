@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test001" verbose="1" parallel="tests" thread-count="10">
+	<parameter name="browser" value="firefox" />
+    <parameter name="url" value="http://www.danlu.com" />
+	<test name="test001">
+		<classes>
+			<class name="com.danlu.testcases.FormTest001"/>
+		</classes>
+	</test>	
+</suite>
