@@ -1,0 +1,6 @@
+[17:16:54:151][com.danlu.demo_log4j.HelloLog4j-main] -This is debug message.
+[17:16:54:155][com.danlu.demo_log4j.HelloLog4j-main] -This is info message.
+[17:16:54:155][com.danlu.demo_log4j.HelloLog4j-main] -This is error message.
+[17:20:36:854][com.danlu.demo_log4j.HelloLog4j-main] -This is debug message.
+[17:20:36:861][com.danlu.demo_log4j.HelloLog4j-main] -This is info message.
+[17:20:36:861][com.danlu.demo_log4j.HelloLog4j-main] -This is error message.

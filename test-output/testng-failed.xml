@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="10" name="Failed suite [Test001]" parallel="tests">
+  <parameter name="browser" value="firefox"/>
+  <parameter name="url" value="http://www.danlu.com"/>
+  <test name="test001(failed)" parallel="tests">
+    <classes>
+      <class name="com.danlu.testcases.FormTest001">
+        <methods>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="form002"/>
+          <include name="form001"/>
+          <include name="beforeSuite"/>
+          <include name="form003"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- com.danlu.testcases.FormTest001 -->
+    </classes>
+  </test> <!-- test001(failed) -->
+</suite> <!-- Failed suite [Test001] -->
