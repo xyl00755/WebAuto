@@ -72,7 +72,7 @@ public class Elements {
 	 * 
 	 */
 	public static String getP(String param) {
-		String filePath = "./config/elementpath_TRADE.properties";
+		String filePath = "D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\src\\elementpath.properties";
 		Properties p = readProperties(filePath);
 		String pr = p.getProperty(param);
 		return pr;
