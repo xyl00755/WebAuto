@@ -31,6 +31,9 @@ public class Browser {
 		default:
 			Driver = new InternetExplorerDriver();
 		}
+        
+        Driver.manage().window().maximize();
+        
 		if ((String) params.get("URL") != null) {
 			if (((String) params.get("URL")).startsWith("http://")
 					|| ((String) params.get("URL")).startsWith("https://")) {
@@ -40,7 +43,7 @@ public class Browser {
 			}
 
 		}
-		Driver.manage().window().maximize();
+		
 		Driver.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS);
 		// MainWinHandle = Driver.getWindowHandle();
 
