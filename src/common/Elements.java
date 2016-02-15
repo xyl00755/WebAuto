@@ -31,9 +31,8 @@ public class Elements {
 		case "Link Text":
 			foundElement = Driver.findElement(By.linkText((String) params.get("ID")));
 			break;
-		//XPath is different
 		case "XPath":
-			foundElement = Driver.findElement(By.xpath(Elements.getP((String) params.get("ID"))));
+            foundElement = Driver.findElement(By.xpath((String) params.get("ID")));
 			break;
 		case "Name":
 			foundElement = Driver.findElement(By.name((String) params.get("ID")));
@@ -44,8 +43,11 @@ public class Elements {
 		case "Tag Name":
 			foundElement = Driver.findElement(By.tagName((String) params.get("ID")));
 			break;
+        case "Property":
+            foundElement = Driver.findElement(By.xpath(Elements.getP((String) params.get("ID"))));
+            break;
 		default:
-			foundElement = Driver.findElement(By.xpath((String) params.get("ID")));
+			foundElement = Driver.findElement(By.xpath(Elements.getP((String) params.get("ID"))));
 		}
 
 		return foundElement;

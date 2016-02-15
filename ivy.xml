@@ -7,5 +7,6 @@
         <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="latest.release"/>
         <dependency org="net.jcip" name="jcip-annotations" rev="latest.release"/>
         <dependency org="org.seleniumhq.selenium" name="selenium-server" rev="latest.release"/>
+        <dependency org="org.apache.poi" name="poi" rev="latest.release"/>
     </dependencies>
 </ivy-module>
