@@ -83,7 +83,6 @@ public class SendKeys {
 			int j = 0;
 			while (j < colNum) {
 				str= getCellFormatValue(row.getCell(j));
-				System.out.println(str);
 				content.put(row.getCell(0)+"."+sheet.getRow(0).getCell(j), str);
 				j++;
 			}
