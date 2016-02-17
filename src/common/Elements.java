@@ -10,7 +10,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.JavascriptExecutor;
 
 public class Elements {
 
@@ -51,6 +51,13 @@ public class Elements {
 			foundElement = Driver.findElement(By.xpath(Elements.getP(params.get("ID"))));
 		}
 
+        //hightlight element
+        final JavascriptExecutor js = (JavascriptExecutor) Driver;
+        js.executeScript("element = arguments[0];" + "original_style = element.getAttribute('style');"
+                + "element.setAttribute('style', original_style + \";"
+                + "background: yellow; border: 2px solid red;\");"
+                + "setTimeout(function(){element.setAttribute('style', original_style);}, 1000);", foundElement);
+        
 		return foundElement;
 	}
 
@@ -75,7 +82,7 @@ public class Elements {
 	 * 
 	 */
 	public static String getP(String param) {
-		String filePath = "./config/elementpath_TRADE.properties";
+		String filePath = "D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\src\\elementpath.properties";
 		Properties p = readProperties(filePath);
 		String pr = p.getProperty(param);
 		return pr;

@@ -6,7 +6,7 @@ public class CloseBrowser {
 
 	public static void run(Object parmas) {
 		if (Browser.Driver != null)
-			Browser.Driver.quit();
+			Browser.Driver.close();
 	}
 
 }
