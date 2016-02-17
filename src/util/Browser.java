@@ -13,7 +13,7 @@ public class Browser {
 	// public static MainWinHandle = null;
 
 	// start browser
-	public static void run(HashMap<String, Object> params) {
+	public static void run(HashMap<String, String> params) {
 
 		try {
 			Thread.sleep(1000);
@@ -21,7 +21,7 @@ public class Browser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		switch ((String) params.get("Browser Type")) {
+		switch (params.get("Browser Type")) {
 		case "Firefox":
 			Driver = new FirefoxDriver();
 			break;
@@ -31,15 +31,15 @@ public class Browser {
 		default:
 			Driver = new InternetExplorerDriver();
 		}
-        
-        Driver.manage().window().maximize();
-        
-		if ((String) params.get("URL") != null) {
-			if (((String) params.get("URL")).startsWith("http://")
-					|| ((String) params.get("URL")).startsWith("https://")) {
-				Driver.get((String) params.get("URL"));
+		
+		Driver.manage().window().maximize();
+		
+		if (params.get("URL") != null) {
+			if ((params.get("URL")).startsWith("http://")
+					|| (params.get("URL")).startsWith("https://")) {
+				Driver.get(params.get("URL"));
 			} else {
-				Driver.get("http://" + (String) params.get("URL"));
+				Driver.get("http://" + params.get("URL"));
 			}
 
 		}

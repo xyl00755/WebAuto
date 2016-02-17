@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class Click {
 
-	public static void run(HashMap<String, Object> params) {
+	public static void run(HashMap<String, String> params) {
 
 		WebElement element = Elements.find(params, Browser.Driver);
 		

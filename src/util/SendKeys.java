@@ -23,16 +23,16 @@ import org.openqa.selenium.WebElement;
 
 public class SendKeys {
 
-	public static void run(HashMap<String, Object> params){
+	public static void run(HashMap<String, String> params){
 	    WebElement element = Elements.find(params,Browser.Driver);
 	    
-	    switch ((String) params.get("Text Type")) {
+	    switch (params.get("Text Type")) {
 	    case "User":
 	    	try {
-				InputStream is1 = new FileInputStream("D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\src\\User.xls");
+				InputStream is1 = new FileInputStream("d:\\User.xls");
 				SendKeys excelReader = new SendKeys();
 				Map<String, String> map = excelReader.readExcelContent(is1);
-				element.sendKeys(map.get((String)params.get("Text")));
+				element.sendKeys(map.get(params.get("Text")));
 			} catch (FileNotFoundException e) {
 				System.out.println("Excel file doesn't exist!");
 				e.printStackTrace();
@@ -40,7 +40,7 @@ public class SendKeys {
 	    	break;
 	    case "Product":
 	    	try {
-				InputStream is2 = new FileInputStream("D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\src\\Product.xls");
+				InputStream is2 = new FileInputStream("d:\\Product.xls");
 				SendKeys excelReader = new SendKeys();
 				Map<String, String> map = excelReader.readExcelContent(is2);
 				element.sendKeys(map.get(params.get("Text")));
@@ -50,7 +50,7 @@ public class SendKeys {
 			}	    	
 	    	break;
 	    default:
-	    	element.sendKeys((String) params.get("Text"));
+	    	element.sendKeys(params.get("Text"));
 	    }
 	}
 	
