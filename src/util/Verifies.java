@@ -24,4 +24,7 @@ public class Verifies {
 		Assert.assertEquals(element.getText(),params.get("Text"));
 	}
 	
+    public static void currenturl(HashMap<String, String> params){
+		Assert.assertEquals(Browser.Driver.getCurrentUrl(),params.get("Value"));
+	}
 }
