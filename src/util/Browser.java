@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Browser {
 
 	public static WebDriver Driver = null;
-	// public static MainWinHandle = null;
+	public static String MainWinHandle = null;
 
 	// start browser
 	public static void run(HashMap<String, String> params) {
@@ -47,7 +47,7 @@ public class Browser {
 		}
 		
 		Driver.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS);
-		// MainWinHandle = Driver.getWindowHandle();
+		MainWinHandle = Driver.getWindowHandle();
 
 	}
 }
