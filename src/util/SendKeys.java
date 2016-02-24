@@ -49,7 +49,7 @@ public class SendKeys {
 				e.printStackTrace();
 			}	    	
 	    	break;
-            case "Text":
+        case "Text":
             element.sendKeys(params.get("Text"));
             break;
 	    default:
