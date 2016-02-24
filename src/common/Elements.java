@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -52,13 +53,54 @@ public class Elements {
 		}
 
         //hightlight element
-        final JavascriptExecutor js = (JavascriptExecutor) Driver;
-        js.executeScript("element = arguments[0];" + "original_style = element.getAttribute('style');"
-                + "element.setAttribute('style', original_style + \";"
-                + "background: yellow; border: 2px solid red;\");"
-                + "setTimeout(function(){element.setAttribute('style', original_style);}, 1000);", foundElement);
-        
-		return foundElement;
+        if(foundElement != null){
+            final JavascriptExecutor js = (JavascriptExecutor) Driver;
+      		js.executeScript("element = arguments[0];" + "original_style = element.getAttribute('style');"
+         	       + "element.setAttribute('style', original_style + \";"
+        	       + "background: yellow; border: 2px solid red;\");"
+         	       + "setTimeout(function(){element.setAttribute('style', original_style);}, 1000);", foundElement);
+        	return foundElement;
+        } else {
+            return null;
+        }
+		
+	}
+    
+    public static List<WebElement> findAll(HashMap<String, String> params, WebDriver Driver){
+		List<WebElement> foundElements;
+		switch (params.get("ID Type")) {
+		case "Class Name":
+			foundElements = Driver.findElements(By.className(params.get("ID")));
+			break;
+		case "Css Selector":
+			foundElements = Driver.findElements(By.cssSelector(params.get("ID")));
+			break;
+		case "ID":
+			foundElements = Driver.findElements(By.id(params.get("ID")));
+			break;
+		case "Link Text":
+			foundElements = Driver.findElements(By.linkText(params.get("ID")));
+			break;
+		case "XPath":
+			foundElements = Driver.findElements(By.xpath(params.get("ID")));
+			break;
+		case "Name":
+			foundElements = Driver.findElements(By.name(params.get("ID")));
+			break;
+		case "Partial Link Text":
+			foundElements = Driver.findElements(By.partialLinkText(params.get("ID")));
+			break;
+		case "Tag Name":
+			foundElements = Driver.findElements(By.tagName(params.get("ID")));
+			break;
+		//Property,default:xpath, get from properties
+		case "Property":
+            foundElements = Driver.findElements(By.xpath(Elements.getP(params.get("ID"))));
+            break;
+		default:
+			foundElements = Driver.findElements(By.xpath(Elements.getP(params.get("ID"))));
+		}
+		return foundElements;
 	}
 
 	/*

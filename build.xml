@@ -1,4 +1,4 @@
-<project name="Sample" basedir="." default="main" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="WebAuto" basedir="." default="main" xmlns:ivy="antlib:org.apache.ivy.ant">
 
     <property name="src.dir"     value="src"/>
     <property name="build.dir"   value="build"/>
