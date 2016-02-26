@@ -12,6 +12,7 @@ public class DeleteCookie {
 			map1.put("Seconds", "2");
 			
 			System.out.println("Cookies:"+Browser.Driver.manage().getCookies());
+            Wait.run(params);
 			Browser.Driver.manage().deleteAllCookies();
 			Wait.run(params);
 			System.out.println("Cookies:"+Browser.Driver.manage().getCookies());
