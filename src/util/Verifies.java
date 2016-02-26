@@ -18,7 +18,7 @@ public class Verifies {
 	}
 
 	// Page Title
-	public static void pagetitle(HashMap<String, String> params) {
+	public static void pageTitle(HashMap<String, String> params) {
 		Assert.assertEquals(Browser.Driver.getTitle(), params.get("Title"));
 	}
 
@@ -29,7 +29,7 @@ public class Verifies {
 	}
 
 	// Current URL
-	public static void currenturl(HashMap<String, String> params) {
+	public static void currentUrl(HashMap<String, String> params) {
 		Assert.assertEquals(Browser.Driver.getCurrentUrl(), params.get("Value"));
 	}
 
@@ -40,14 +40,14 @@ public class Verifies {
 	}
 
 	// Exist
-	public static void isexisted(HashMap<String, String> params) {
+	public static void isExisted(HashMap<String, String> params) {
 		List<WebElement> elements = Elements.findAll(params, Browser.Driver);
 		Assert.assertNotEquals(elements.size(), 0);
 		System.out.println("element " + params.get("ID") + " is existed.");
 	}
 
 	// Not Exist
-	public static void notexisted(HashMap<String, String> params) {
+	public static void notExisted(HashMap<String, String> params) {
 		List<WebElement> elements = Elements.findAll(params, Browser.Driver);
 		Assert.assertEquals(elements.size(), 0);
 		System.out.println("element " + params.get("ID") + " is not existed.");
