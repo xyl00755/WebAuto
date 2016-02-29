@@ -124,7 +124,7 @@ public class Elements {
 	 * 
 	 */
 	public static String getP(String param) {
-		String filePath = "D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\src\\elementpath.properties";
+		String filePath = "E:\\files\\WebAuto\\elementpath.properties";
 		Properties p = readProperties(filePath);
 		String pr = p.getProperty(param);
 		return pr;
