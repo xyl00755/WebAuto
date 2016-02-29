@@ -12,8 +12,15 @@ public class DeleteCookie {
 			System.out.println("Cookie Name == ALL");
 			System.out.println("Before Cookies:"+Browser.Driver.manage().getCookies());
 			Browser.Driver.manage().deleteAllCookies();
-			Wait.run(params);
 			System.out.println("After Cookies:"+Browser.Driver.manage().getCookies());
+			
+			HashMap<String,String> map1 = new HashMap<String,String>();
+			map1.put("Seconds", "2");
+			Wait.run(map1);
+			
+			System.out.println("After Wait:"+Browser.Driver.manage().getCookies());
+			
+			
 		} else {
 			System.out.println("Cookie Name == "+params.get("Cookie Name"));
 			System.out.println("Before Cookies:"+Browser.Driver.manage().getCookies());
