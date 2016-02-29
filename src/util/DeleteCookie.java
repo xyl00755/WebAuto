@@ -3,6 +3,7 @@ package util;
 import java.util.HashMap;
 
 import common.Wait;
+import util.Browser;
 
 public class DeleteCookie {
 	
