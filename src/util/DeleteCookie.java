@@ -16,6 +16,9 @@ public class DeleteCookie {
             
 			System.out.println("Cookie Name == ALL");
 			System.out.println("Before Cookies:"+Browser.Driver.manage().getCookies());
+            
+            System.out.println(Browser.Driver);
+            
 			Browser.Driver.manage().deleteAllCookies();
 			System.out.println("After Cookies:"+Browser.Driver.manage().getCookies());
 			

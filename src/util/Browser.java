@@ -28,6 +28,7 @@ public class Browser {
 		case "Chrome":
             System.setProperty("webdriver.chrome.driver", "D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\bin\\chromedriver.exe");
 			Driver = new ChromeDriver();
+            System.out.println(Driver);
 			break;
 		default:
             System.setProperty("webdriver.ie.driver","D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\bin\\IEDriverServer.exe");
