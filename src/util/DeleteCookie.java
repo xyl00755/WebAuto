@@ -8,26 +8,11 @@ import util.Browser;
 public class DeleteCookie {
 	
 	public static void run(HashMap<String, String> params){
-		if(params.get("Cookie Name").equals("ALL")){
-            
-            HashMap<String,String> map1 = new HashMap<String,String>();
-			map1.put("Seconds", "2");
-			Wait.run(map1);
-            
+		if(params.get("Cookie Name").equals("ALL")){      
 			System.out.println("Cookie Name == ALL");
 			System.out.println("Before Cookies:"+Browser.Driver.manage().getCookies());
-            
-            System.out.println("Browsr.Driver == " + Browser.Driver);
-            
 			Browser.Driver.manage().deleteAllCookies();
-			System.out.println("After Cookies:"+Browser.Driver.manage().getCookies());
-			
-
-			Wait.run(map1);
-			
-			System.out.println("After Wait:"+Browser.Driver.manage().getCookies());
-			
-			
+			System.out.println("After Cookies:"+Browser.Driver.manage().getCookies());					
 		} else {
 			System.out.println("Other Cookie Name == "+params.get("Cookie Name"));
 			System.out.println("Before Cookies:"+Browser.Driver.manage().getCookies());
