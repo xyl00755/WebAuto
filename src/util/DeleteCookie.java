@@ -8,7 +8,7 @@ import util.Browser;
 public class DeleteCookie {
 	
 	public static void run(HashMap<String, String> params){
-		if(params.get("Cookie Name") == "ALL"){
+		if(params.get("Cookie Name").equals("ALL")){
             
             HashMap<String,String> map1 = new HashMap<String,String>();
 			map1.put("Seconds", "2");
