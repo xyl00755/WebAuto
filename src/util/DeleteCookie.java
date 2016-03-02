@@ -29,7 +29,7 @@ public class DeleteCookie {
 			
 			
 		} else {
-			System.out.println("Cookie Name == "+params.get("Cookie Name"));
+			System.out.println("Other Cookie Name == "+params.get("Cookie Name"));
 			System.out.println("Before Cookies:"+Browser.Driver.manage().getCookies());
 			Browser.Driver.manage().deleteCookieNamed(params.get("Cookie Name"));
 			System.out.println("After Cookies:"+Browser.Driver.manage().getCookies());			
