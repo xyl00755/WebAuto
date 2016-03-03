@@ -13,6 +13,7 @@ public class DeleteCookie {
 			
 			System.out.println("Cookies:"+Browser.Driver.manage().getCookies());
             Wait.run(params);
+            System.out.println(Browser.Driver);
 			Browser.Driver.manage().deleteAllCookies();
 			Wait.run(params);
 			System.out.println("Cookies:"+Browser.Driver.manage().getCookies());
