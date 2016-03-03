@@ -29,7 +29,7 @@ public class SendKeys {
 	    switch (params.get("Text Type")) {
 	    case "User":
 	    	try {
-				InputStream is1 = new FileInputStream("D:\\RedwoodHQ\\WebAuto\\User.xls");
+				InputStream is1 = new FileInputStream("\\\\testmech\\WebAuto\\User.xls");
 				SendKeys excelReader = new SendKeys();
 				Map<String, String> map = excelReader.readExcelContent(is1);
 				element.sendKeys(map.get(params.get("Text")));
@@ -40,7 +40,7 @@ public class SendKeys {
 	    	break;
 	    case "Product":
 	    	try {
-				InputStream is2 = new FileInputStream("D:\\RedwoodHQ\\WebAuto\\Product.xls");
+				InputStream is2 = new FileInputStream("\\\\testmech\\WebAuto\\Product.xls");
 				SendKeys excelReader = new SendKeys();
 				Map<String, String> map = excelReader.readExcelContent(is2);
 				element.sendKeys(map.get(params.get("Text")));
