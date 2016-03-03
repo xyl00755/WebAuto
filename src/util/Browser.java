@@ -26,11 +26,12 @@ public class Browser {
 			Driver = new FirefoxDriver();
 			break;
 		case "Chrome":
-            System.setProperty("webdriver.chrome.driver", "D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\bin\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "D:\\RedwoodHQ\\WebAuto\\chromedriver.exe");
 			Driver = new ChromeDriver();
+            System.out.println(Driver);
 			break;
 		default:
-            System.setProperty("webdriver.ie.driver","D:\\RedwoodHQ\\public\\automationscripts\\WebAuto\\admin\\bin\\IEDriverServer.exe");
+            System.setProperty("webdriver.ie.driver","D:\\RedwoodHQ\\WebAuto\\IEDriverServer.exe");
 			Driver = new InternetExplorerDriver();
 		}
 		
