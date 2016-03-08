@@ -7,11 +7,9 @@ public class CloseBrowser {
 	public static void run(Object parmas) {
         if (Browser.Driver != null)
             try {
-                Browser.Driver.close();
-                Runtime.getRuntime().exec("taskkill /F /IM IEDriverServer.exe");
-                Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe");
+                Browser.Driver.quit();
             } catch (Exception anException) {
-                anException.printStackTrace();
+                System.out.println("Closeed All Browser and Killed task");
             }
 	}
 }
