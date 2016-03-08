@@ -26,8 +26,8 @@ public class SwitchWindow {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            System.out.println("Window:" + params.get("Window Name") + "does not exist.");
 		}
-		System.out.println("Window:" + params.get("Window Name") + "does not exist.");
 	}
 
 }
