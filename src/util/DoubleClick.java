@@ -4,8 +4,9 @@ import java.util.HashMap;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
+import util.Browser;
 import common.Elements;
+
 
 public class DoubleClick {
 	
