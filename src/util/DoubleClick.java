@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import util.Browser;
 import common.Elements;
 
-
 public class DoubleClick {
 	
 	public static void run(HashMap<String, String> params){

@@ -5,7 +5,6 @@ import actions.selenium.Browser
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 
-
 class DoubleClick{
   
   public void run(def params){
