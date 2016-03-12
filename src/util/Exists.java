@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-
+import org.testng.Assert;
 import common.Elements;
 
 public class Exists {
@@ -17,11 +17,15 @@ public class Exists {
 			
 			System.out.println("is null");
 			System.out.println("elements.size() = " + elements.size());
-			assert elements.size() > 0 : "Error element: " + params.get("ID") + " was not found.";
+			//assert elements.size() > 0 : "Error element: " + params.get("ID") + " was not found.";
+			
+			Assert.assertEquals(elements.size(),0);
+			
 
 		} else {
 			System.out.println("is not null");
-			assert elements.size() == Integer.parseInt(params.get("Number of Matches")): "Error element: " + params.get("ID") + " was not found expected number of times: " + str + ".  It was found: " + elements.size() + " times.";
+			//assert elements.size() == Integer.parseInt(params.get("Number of Matches")): "Error element: " + params.get("ID") + " was not found expected number of times: " + str + ".  It was found: " + elements.size() + " times.";
+			Assert.assertEquals(elements.size(),Integer.parseInt(params.get("Number of Matches")));
 		}
 	}
 	
