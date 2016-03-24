@@ -52,4 +52,28 @@ public class Verifies {
 		Assert.assertEquals(elements.size(), 0);
 		System.out.println("element " + params.get("ID") + " is not existed.");
 	}
+    
+    // Enabled
+	public static void isEnable(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertEquals(element.isEnabled(), true);
+	}
+
+	// Not Enable
+	public static void notEnable(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertEquals(element.isEnabled(), false);
+	}
+
+	// Visible
+	public static void isVisible(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertEquals(element.isDisplayed(), true);
+	}
+
+	// Not Visible
+	public static void notVisible(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertEquals(element.isDisplayed(), false);
+	}
 }
