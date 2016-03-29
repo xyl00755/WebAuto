@@ -1,5 +1,3 @@
-package util;
-
 import java.util.HashMap;
 
 import util.Browser;
@@ -15,7 +13,7 @@ public class SwitchWindow {
 		while (iTimeout > 0) {
 			for (String handle : Browser.Driver.getWindowHandles()) {
 				Browser.Driver.switchTo().window(handle);
-				if (Browser.Driver.getTitle() == params.get("Window Name")) {
+				if (Browser.Driver.getTitle().equals(params.get("Window Name"))) {
 					return;
 				}
 			}
@@ -26,8 +24,9 @@ public class SwitchWindow {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            System.out.println("Window:" + params.get("Window Name") + "does not exist.");
+			System.out.println("Window:" + params.get("Window Name") + "does not exist.");
 		}
+		
 	}
 
 }
