@@ -7,11 +7,10 @@ import util.Browser;
 
 import org.openqa.selenium.WebElement;
 
-public class GetText {
-	
+public class GetAttribute {
+
 	public static String run(HashMap<String, String> params){
 		WebElement element = Elements.find(params,Browser.Driver); 
-        return element.getText();
-	}  
-   
+        return element.getAttribute(params.get("Attribute Name"));
+	}
 }

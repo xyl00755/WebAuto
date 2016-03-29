@@ -15,7 +15,7 @@ public class SwitchWindow {
 		while (iTimeout > 0) {
 			for (String handle : Browser.Driver.getWindowHandles()) {
 				Browser.Driver.switchTo().window(handle);
-				if (Browser.Driver.getTitle() == params.get("Window Name")) {
+				if (Browser.Driver.getTitle().equals(params.get("Window Name"))) {
 					return;
 				}
 			}
