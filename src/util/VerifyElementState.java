@@ -29,7 +29,7 @@ public class VerifyElementState{
 		eVisible="false";
 	}
 	if(params.get("Is Visible") != null){
-    	Assert.assertEquals(true,eVisible==params.get("Is Visible"));
+    	Assert.assertEquals(true,eVisible==params.get("Is Visible"));   
     }
 	
     if(params.get("Is Enable") != null){
