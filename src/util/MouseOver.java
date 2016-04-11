@@ -13,6 +13,8 @@ public class MouseOver {
 		Actions action = new Actions(Browser.Driver);
 		WebElement element = Elements.find(params, Browser.Driver);
 	//	action.moveToElement(element).build().perform();
-        action.moveToElement(element).click().build().perform();
+    //	action.moveToElement(element).click().perform();
+        action.moveToElement(element).perform();
 	}
+    
 }
