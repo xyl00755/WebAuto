@@ -54,11 +54,11 @@ public class Elements {
 
         //hightlight element
         if(foundElement != null){
-            final JavascriptExecutor js = (JavascriptExecutor) Driver;
-      		js.executeScript("element = arguments[0];" + "original_style = element.getAttribute('style');"
-         	       + "element.setAttribute('style', original_style + \";"
-        	       + "background: yellow; border: 2px solid red;\");"
-         	       + "setTimeout(function(){element.setAttribute('style', original_style);}, 1000);", foundElement);
+        //    final JavascriptExecutor js = (JavascriptExecutor) Driver;
+      	//	js.executeScript("element = arguments[0];" + "original_style = element.getAttribute('style');"
+        // 	       + "element.setAttribute('style', original_style + \";"
+        //	       + "background: yellow; border: 2px solid red;\");"
+        // 	       + "setTimeout(function(){element.setAttribute('style', original_style);}, 1000);", foundElement);
         	return foundElement;
         } else {
             return null;
