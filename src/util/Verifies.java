@@ -23,12 +23,23 @@ public class Verifies {
 		Assert.assertEquals(Browser.Driver.getTitle(), params.get("Title"));
         System.out.println("Browser Title is " + params.get("Title"));
 	}
-
+    
+    public static void pageTitleContain(HashMap<String, String> params) {
+		Assert.assertTrue(Browser.Driver.getTitle().contains(params.get("Title")));
+        System.out.println("Browser Title contains " + params.get("Title"));
+	}
+    
 	// Text
 	public static void text(HashMap<String, String> params) {
 		WebElement element = Elements.find(params, Browser.Driver);
 		Assert.assertEquals(element.getText(), params.get("Text"));
         System.out.println("element " + params.get("ID") + "\'s Text is" + params.get("Text"));
+	}
+    
+    public static void textContain(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertTrue(element.getText().contains(params.get("Text")));
+        System.out.println("element " + params.get("ID") + "\'s Text contains" + params.get("Text"));
 	}
 
 	// Current URL
