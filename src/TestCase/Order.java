@@ -2,7 +2,7 @@ package TestCase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 public class Order {
@@ -14,7 +14,8 @@ public class Order {
 	@Test
 	public static void order() {
 
-		WebDriver dr = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "\\\\testmech\\WebAuto\\chromedriver.exe");
+		WebDriver dr = new ChromeDriver();
 		dr.manage().window().maximize();
 		dr.get(url);
 		dr.findElement(By.xpath("//*[@id='username']")).sendKeys(username);
