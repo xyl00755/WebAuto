@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class Order {
 
 	static String url = "http://123.57.152.182:9002/login?service=http://123.57.244.205/common/caslogin.html";
-	static String username = "liyafei_01";
+	static String username = "testsun";
 	static String password = "123456";
 
 	@Test
@@ -23,7 +23,9 @@ public class Order {
 		dr.findElement(By.xpath("//*[@id='validateCode']")).sendKeys("1111");
 		dr.findElement(By.xpath("//*[@id='submitLogin']")).click();
 		
-		dr.get("http://123.57.244.205/goods/detail.html?goodsId=f3654b5fcceb36d4992e076858660b57");
+        
+        for(int i=0 ;i<5 ;i++){
+            dr.get("http://123.57.244.205/goods/detail.html?goodsId=413b0e50853e4064b28994618edf825c");
 
 		dr.findElement(By.xpath(".//*[@id='detail_button_suc']/a")).click();
 		try {
@@ -44,6 +46,30 @@ public class Order {
 			e.printStackTrace();
 		}
 		dr.findElement(By.xpath(".//*[@id='toPayOrder']")).click();
+            
+            
+        }
+		/*dr.get("http://123.57.244.205/goods/detail.html?goodsId=413b0e50853e4064b28994618edf825c");
+
+		dr.findElement(By.xpath(".//*[@id='detail_button_suc']/a")).click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dr.findElement(By.xpath(".//*[@id='bodyId']/div[13]/div/div/div/a[2]")).click();
+		
+		dr.findElement(By.xpath(".//*[@id='checkedAllUp']")).click();
+		dr.findElement(By.xpath(".//*[@id='shoppingCartContentPageDown']/div[2]/a[1]")).click();
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dr.findElement(By.xpath(".//*[@id='toPayOrder']")).click();*/
 		
 		dr.quit();
 	}
