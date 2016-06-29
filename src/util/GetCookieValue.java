@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class GetCookieValue {
 
-	@Test
+	
 	public static String run(HashMap<String, String> params){
 		
 		if(params.get("Cookie Name").equals("ALL")){
