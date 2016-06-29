@@ -12,7 +12,7 @@ class AddGoods{
 	static String password = "123456";
     
     @Test
-	public static void order() {
+	public static void addgoods() {
 
         System.setProperty("webdriver.chrome.driver", "\\\\testmech\\WebAuto\\chromedriver.exe");
 		WebDriver dr = new ChromeDriver();
@@ -24,19 +24,17 @@ class AddGoods{
 		dr.findElement(By.xpath("//*[@id='submitLogin']")).click();
         
          for(int i=0 ;i<2 ;i++){
-            dr.get("http://123.57.244.205/goods/detail.html?goodsId=413b0e50853e4064b28994618edf825c");
+            dr.get("http://123.57.244.205/common/goods/gotoGoods.html");
 
-		dr.findElement(By.xpath(".//*[@id='detail_button_suc']/a")).click();
+		dr.findElement(By.xpath(".//*[@id='addGoodsBtn']")).click();
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dr.findElement(By.xpath(".//*[@id='bodyId']/div[13]/div/div/div/a[2]")).click();
-		
-		dr.findElement(By.xpath(".//*[@id='checkedAllUp']")).click();
-		dr.findElement(By.xpath(".//*[@id='shoppingCartContentPageDown']/div[2]/a[1]")).click();
+		dr.findElement(By.xpath(".//*[@id='firstTbody']/tr[2]/td[1]/input")).click();
+		dr.findElement(By.xpath(".//*[@id='mainRight']/div/div/div[3]/a")).click();
 		
 		try {
 			Thread.sleep(5000);
