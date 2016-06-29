@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class Order {
+public class Order_Onpay {
 
 	static String url = "http://123.57.152.182:9002/login?service=http://123.57.244.205/common/caslogin.html";
 	static String username = "testsun";
@@ -24,7 +24,7 @@ public class Order {
 		dr.findElement(By.xpath("//*[@id='submitLogin']")).click();
 		
         
-        for(int i=0 ;i<5 ;i++){
+        for(int i=0 ;i<2 ;i++){
             dr.get("http://123.57.244.205/goods/detail.html?goodsId=413b0e50853e4064b28994618edf825c");
 
 		dr.findElement(By.xpath(".//*[@id='detail_button_suc']/a")).click();
