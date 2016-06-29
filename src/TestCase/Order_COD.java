@@ -1,13 +1,13 @@
 package TestCase;
 
+import java.util.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class Order {
-
-	static String url = "http://123.57.152.182:9002/login?service=http://123.57.244.205/common/caslogin.html";
+class Order_COD{
+   static String url = "http://123.57.152.182:9002/login?service=http://123.57.244.205/common/caslogin.html";
 	static String username = "testsun";
 	static String password = "123456";
 
@@ -45,13 +45,10 @@ public class Order {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		dr.findElement(By.xpath(".//*[@id='toPayOrder']")).click();
-            
-            
+        dr.findElement(By.xpath(".//*[@id='n_cod_pay']")).click();    
+		dr.findElement(By.xpath(".//*[@id='toPayOrder']")).click();   
         }
-		
-		dr.quit();
-	}
-
-
+        dr.quit();
+        
+    }
 }
