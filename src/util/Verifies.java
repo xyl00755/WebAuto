@@ -50,12 +50,17 @@ public class Verifies {
 
 	// Current URL
 	public static void currentUrl(HashMap<String, String> params) {
-		Assert.assertEquals(Browser.Driver.getCurrentUrl(), params.get("Value"));
+        Assert.assertEquals(Browser.Driver.getCurrentUrl(), params.get("Value"));
         System.out.println("Current URL is " + params.get("Value"));
 	}
     
     public static void urlContain(HashMap<String, String> params) {
-		WebElement element = Elements.find(params, Browser.Driver);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Assert.assertTrue(Browser.Driver.getCurrentUrl().contains(params.get("Value")));
         System.out.println("Current URL contains " + params.get("Value"));
 	}
