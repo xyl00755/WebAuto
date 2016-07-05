@@ -17,6 +17,12 @@ public class Verifies {
 		Assert.assertEquals(element.getAttribute(params.get("Attribute Name")), params.get("Value"));
         System.out.println("element " + params.get("ID") + " \'s " + params.get("Attribute Name") + "is" + params.get("Value"));
 	}
+    
+    public static void attributeContains(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertTrue(element.getAttribute(params.get("Attribute Name")).contains(params.get("Value")));
+        System.out.println("element " + params.get("ID") + " \'s " + params.get("Attribute Name") + "contains" + params.get("Value"));
+	}
 
 	// Page Title
 	public static void pageTitle(HashMap<String, String> params) {
@@ -46,6 +52,12 @@ public class Verifies {
 	public static void currentUrl(HashMap<String, String> params) {
 		Assert.assertEquals(Browser.Driver.getCurrentUrl(), params.get("Value"));
         System.out.println("Current URL is " + params.get("Value"));
+	}
+    
+    public static void urlContain(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertTrue(Browser.Driver.getCurrentUrl().contains(params.get("Value")));
+        System.out.println("Current URL contains " + params.get("Value"));
 	}
 
 	// CheckBox
