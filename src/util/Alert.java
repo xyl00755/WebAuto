@@ -1,6 +1,7 @@
 package util;
 
 import java.util.HashMap;
+import util.Browser;
 
 public class Alert {
 
