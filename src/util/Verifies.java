@@ -14,7 +14,7 @@ public class Verifies {
 	// Attribute
 	public static void attribute(HashMap<String, String> params) {
 		WebElement element = Elements.find(params, Browser.Driver);
-		Assert.assertEquals(element.getAttribute(params.get("Attribute Name")), params.get("Value"));
+		Assert.assertEquals((String)element.getAttribute(params.get("Attribute Name")), params.get("Value"));
         System.out.println("element " + params.get("ID") + " \'s " + params.get("Attribute Name") + "is" + params.get("Value"));
 	}
     
