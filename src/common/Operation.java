@@ -528,6 +528,18 @@ public class Operation {
 		System.out.println("Element " + params.get("ID") + " text: " + text);
 		return text;
 	}
+    
+    /**
+	 * get coupon id using regex
+	 * 
+	 * @param params
+	 * @return
+	 */
+	public String getCouponID(HashMap<String, String> params) {
+		List<WebElement> elements = Elements.findAll(params, Browser.Driver);
+		String text = elements.get(0).getText();
+		return text.split("\\D+")[1];
+	}
 
 	/**
 	 * 
