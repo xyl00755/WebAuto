@@ -308,6 +308,25 @@ public class Operation {
 		System.out.println("Input to element " + params.get("ID") + " " + time);
 		element.sendKeys(time);
 	}
+    
+    /**
+	 * 
+	 * @param params
+	 */
+	public void sendTimetoElement(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Date date = new Date();
+        Date date0 = new Date(date.getTime() + 30000);
+		Date date1 = new Date(date0.getTime() + 3600000);
+		DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+		String time0 = format.format(date0);
+		String time1 = format.format(date1);
+		if (params.get("Type").equals("Start")) {
+			element.sendKeys(time0);
+		} else {
+			element.sendKeys(time1);
+		}
+	}
 
 	/**
 	 * focus on element
@@ -538,7 +557,9 @@ public class Operation {
 	public String getCouponID(HashMap<String, String> params) {
 		List<WebElement> elements = Elements.findAll(params, Browser.Driver);
 		String text = elements.get(0).getText();
-		return text.split("\\D+")[1];
+        String couponId = text.split("\\D+")[2];
+        System.out.println("Coupon id: " + couponId);
+		return couponId;
 	}
 
 	/**
