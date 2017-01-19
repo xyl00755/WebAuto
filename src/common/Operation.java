@@ -59,6 +59,7 @@ public class Operation {
 	 */
 	public void clickElement(HashMap<String, String> params) {
 		WebElement element = Elements.find(params, Browser.Driver);
+        waitForElement(params);
 		element.click();
         sleep();
 		System.out.println("Click element " + params.get("ID"));
@@ -310,21 +311,30 @@ public class Operation {
 	}
     
     /**
-	 * 
+	 * only used for coupon activity start/end time
 	 * @param params
 	 */
 	public void sendTimetoElement(HashMap<String, String> params) {
 		WebElement element = Elements.find(params, Browser.Driver);
+        
 		Date date = new Date();
         Date date0 = new Date(date.getTime() + 30000);
 		Date date1 = new Date(date0.getTime() + 3600000);
 		DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-		String time0 = format.format(date0);
-		String time1 = format.format(date1);
+		
+		
 		if (params.get("Type").equals("Start")) {
-			element.sendKeys(time0);
+            String time0 = format.format(date0);
+            JavascriptExecutor js = (JavascriptExecutor) Browser.Driver;
+			js.executeScript("arguments[0].value=\""+time0+"\"", element);
+            element.click();
+            System.out.println("Send time " + time0 + " to " + params.get("ID"));
 		} else {
-			element.sendKeys(time1);
+            String time1 = format.format(date1);
+            JavascriptExecutor js = (JavascriptExecutor) Browser.Driver;
+			js.executeScript("arguments[0].value=\""+time1+"\"", element);
+            element.click();
+            System.out.println("Send time " + time1 + " to " + params.get("ID"));
 		}
 	}
 
@@ -596,10 +606,10 @@ public class Operation {
 	 * @param params
 	 */
 	public void waitForElement(HashMap<String, String> params) {
-		int count = Integer.parseInt(params.get("Timeout In Seconds"));
+		int count = 10;
 		while (count >= 0) {
 			WebElement element = Elements.find(params, Browser.Driver);
-			if (element != null)
+			if (element != null && element.isDisplayed())
 				break;
 			try {
 				Thread.sleep(1000);
@@ -609,7 +619,7 @@ public class Operation {
 			count--;
 		}
 		if (count <= 0) {
-			System.out.println("Element was not found in" + params.get("Timeout In Seconds") + "seconds.");
+			System.out.println("Element was not found in 10 seconds.");
 		}
 	}
 

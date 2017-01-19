@@ -66,6 +66,11 @@ public class Browser {
 			}
 		}
 		System.out.println("Open " + params.get("Browser Type") + " and navigate to " + params.get("URL"));
+        try {
+			Thread.sleep(2 * 1000);
+		} catch (final InterruptedException e) {
+			System.out.println("sleep " + e);
+		}
 		Driver.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS);
 		MainWinHandle = Driver.getWindowHandle();
 	}
