@@ -325,7 +325,6 @@ public class Operation {
 		Date date1 = new Date(date0.getTime() + 3600000);
 		DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 		
-		
 		if (params.get("Type").equals("Start")) {
             String time0 = format.format(date0);
             JavascriptExecutor js = (JavascriptExecutor) Browser.Driver;

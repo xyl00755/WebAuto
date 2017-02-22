@@ -34,8 +34,8 @@
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
-        <groovyc srcdir="${src.dir}" destdir="${classes.dir}">
-            <javac debug="on" classpathref="class.path"/>
+        <groovyc srcdir="${src.dir}" destdir="${classes.dir}" >
+            <javac debug="on" classpathref="class.path" encoding="UTF-8"/>
         </groovyc>
     </target>
 

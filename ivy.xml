@@ -8,7 +8,7 @@
         <dependency org="net.jcip" name="jcip-annotations" rev="1.0"/>
         <dependency org="org.seleniumhq.selenium" name="selenium-server" rev="3.0.1"/>
         <dependency org="org.apache.poi" name="poi" rev="3.14"/>
-        <dependency org="com.google.code.gson" name="gson" rev="2.8.0"/>
+		<dependency org="com.alibaba" name="fastjson" rev="1.2.24"/>
 		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.3"/>
     </dependencies>
 </ivy-module>
