@@ -471,6 +471,16 @@ public class Operation {
 		System.out.println("Current Url is: " + url);
 		return url;
 	}
+    
+    /**
+	 * 
+	 * @param params
+	 * @return
+	 */
+	public int getElementNo(HashMap<String, String> params) {
+		List<WebElement> elements = Elements.findAll(params, Browser.Driver);
+		return elements.size();
+	}
 
 	/**
 	 * get element location

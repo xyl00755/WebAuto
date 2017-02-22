@@ -34,12 +34,22 @@ import com.alibaba.fastjson.JSON;
 
 public class TestJiulegouAPI {
 
-	String filePath = "./resources/userorder.txt";
+	String filePath = "userorder.txt";
 
 	@BeforeSuite
 	public void initTestData() {
 
 	}
+    
+    @Test
+    public void jiulegou() {
+        newUser();
+        modifyUser();
+        newOrder();
+        modifyOrder();
+        sendOrder();
+        cancelOrder();
+    }
 
 	/**
 	 * Request
