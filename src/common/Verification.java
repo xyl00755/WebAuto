@@ -201,6 +201,17 @@ public class Verification {
 		Assert.assertEquals(element.isDisplayed(), false, "ERROR: Visible.");
 		System.out.println("Element " + params.get("ID") + " is not visible.");
 	}
+    
+    /**
+	 * verify input box is editable
+	 * 
+	 * @param params
+	 */
+	public void isEditable(HashMap<String, String> params) {
+		WebElement element = Elements.find(params, Browser.Driver);
+		Assert.assertEquals(true, element.getAttribute("readonly") == null || element.getAttribute("disabled") == null, "ERROR: NOT Editable!");
+		System.out.println("Element " + params.get("ID") + " is editable.");
+	}
 
 	/**
 	 * verify actual contains expected
