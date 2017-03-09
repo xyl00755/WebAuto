@@ -15,9 +15,17 @@
     2、如果遇到xpath正确但是定位不到，一般是因为该元素在iframe里。使用该元素先要switch to frame
 
 四、如何在本机调试
-	1、点击本页左上方 Download Agent 下载
-    2、（如已安装之前版本，卸载后再）默认安装，其中redwood server 为192.168.30.239
-    3、在本机启动redwood agent 并将本机添加到Execution的machines中，即可
-
+	1、点击本页左上方 Download Agent 下载；
+    2、（如已安装之前版本，卸载后再）默认安装，其中redwood server 为192.168.30.239；
+    3、在本机启动redwood agent 并将本机添加到Execution的machines中，即可。
+    
+五、关于浏览器和浏览器驱动
+    1、chromedriver和chrome：chromedriver用于启动chrome浏览器，这是每步操作的前提；chromedriver和chrome有自己的版本，现使用的chromedriver版本为2.25，支持chrome版本为53+
+    	redwood会根据chrome版本的更新而使用对应的chromedriver；在本地调试时请使用对应的chrome版本
+    	https://sites.google.com/a/chromium.org/chromedriver/
+    2、IE和IEDriverServer：
+    3、Edge和MicrosoftWebDriver：
+    4、Firefox：目前redwood没有使用官方的驱动，Firefox请使用43版本，不需要驱动
+    
 
 ***用例和关键字有时会出现不能保存的情况，需要刷新页面，但更新的内容会丢失****
