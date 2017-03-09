@@ -16,7 +16,7 @@
 
 四、如何在本机调试
 	1、点击本页左上方 Download Agent 下载
-    2、（如已安装之前版本，卸载后再）默认安装，其中redwood server 为192.168.30.239
+    2、（如已安装之前版本，用自带的uninstall.exe卸载后再）默认安装，其中redwood server 为192.168.30.239
     3、在本机启动redwood agent 并将本机添加到Execution的machines中，即可
 
 
