@@ -12,7 +12,7 @@
 三、关于xpath
 	1、建议标准：//div[@id='xxxx']
     	// 表示相对路径； div 表示元素的html标签； @id 是用于定位该元素的属性； 'xxxx' 是该属性的值
-    2、如果遇到xpath正确但是定位不到，一般是因为该元素在iframe里。使用该元素首先要使用switch to frame
+    2、如果遇到xpath正确但是定位不到，一般是因为该元素在iframe里。使用该元素先要switch to frame
 
 四、如何在本机调试
 	1、点击本页左上方 Download Agent 下载
