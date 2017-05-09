@@ -168,6 +168,7 @@ public class Operation {
 	 */
 	public void goBack(HashMap<String, String> params) {
 		Browser.Driver.navigate().back();
+        sleep();
 	}
 
 	/**
@@ -176,6 +177,7 @@ public class Operation {
 	 */
 	public void goForward(HashMap<String, String> params) {
 		Browser.Driver.navigate().forward();
+        sleep();
 	}
 
 	/**
@@ -184,6 +186,7 @@ public class Operation {
 	 */
 	public void Refresh(HashMap<String, String> params) {
 		Browser.Driver.navigate().refresh();
+        sleep();
 	}
 
 	/**

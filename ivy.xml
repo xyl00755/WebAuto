@@ -4,11 +4,12 @@
         <dependency org="junit" name="junit" rev="4.12"/>
         <dependency org="org.testng" name="testng" rev="6.9.10"/>
         <dependency org="org.webbitserver" name="webbit" rev="0.4.15"/>
-        <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="3.0.1"/>
+        <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="3.3.1"/>
         <dependency org="net.jcip" name="jcip-annotations" rev="1.0"/>
-        <dependency org="org.seleniumhq.selenium" name="selenium-server" rev="3.0.1"/>
+        <dependency org="org.seleniumhq.selenium" name="selenium-server" rev="3.3.1"/>
+        <dependency org="org.seleniumhq.selenium" name="selenium-support" rev="3.3.1"/>
         <dependency org="org.apache.poi" name="poi" rev="3.14"/>
-		<dependency org="com.alibaba" name="fastjson" rev="1.2.24"/>
+		<dependency org="com.alibaba" name="fastjson" rev="1.2.28"/>
 		<dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.3"/>
     </dependencies>
 </ivy-module>
