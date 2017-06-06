@@ -268,8 +268,8 @@ public class TestJiulegouAPI {
         List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("orderNo", fileRead()));
 		formdata.add(new BasicNameValuePair("url", "http://pc.uat.idanlu.com"));
-		Map<String, String> res = getResponse(url, formdata);
-		Assert.assertEquals(res.get("返回码"), "处理成功", "查询支付单失败");     
+		String res = getResponseString(url, formdata);
+		Assert.assertTrue(res.contains("处理成功"), "查支付单失败");
     }
     
     @Test(dependsOnMethods = "searchOrder")
@@ -279,8 +279,8 @@ public class TestJiulegouAPI {
 		formdata.add(new BasicNameValuePair("orderNo", fileRead()));
 		formdata.add(new BasicNameValuePair("url", "http://pc.uat.idanlu.com"));
         formdata.add(new BasicNameValuePair("cardType", "01"));
-		Map<String, String> res = getResponse(url, formdata);
-		Assert.assertEquals(res.get("返回码"), "处理成功", "查询支付单失败");     
+		String res = getResponseString(url, formdata);
+		Assert.assertTrue(res.contains("00"), "支付订单失败");
     }
     
     
@@ -327,6 +327,40 @@ public class TestJiulegouAPI {
 			}
 		}
 
+		System.out.println("");
+		return null;
+	}
+	
+	public String getResponseString(String url, List<NameValuePair> formdata) {
+		// 创建默认的httpClient实例.
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		// 创建httppost
+		HttpPost httppost = new HttpPost(url);
+		UrlEncodedFormEntity uefEntity;
+		try {
+			uefEntity = new UrlEncodedFormEntity(formdata, "UTF-8");
+			httppost.setEntity(uefEntity);
+			System.out.println("Executing request: " + httppost.getURI());
+			System.out.println("Request Payload: " + formdata);
+			CloseableHttpResponse response = httpclient.execute(httppost);		
+			HttpEntity entity = response.getEntity();
+			String str = EntityUtils.toString(entity, "UTF-8");
+			System.out.println("Response String is: " + str);
+			return str;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// 关闭连接,释放资源
+			try {
+				httpclient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		System.out.println("");
 		return null;
 	}
