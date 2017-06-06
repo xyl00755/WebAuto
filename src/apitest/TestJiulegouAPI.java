@@ -50,6 +50,17 @@ public class TestJiulegouAPI {
         sendOrder();
         cancelOrder();
     }
+    
+    @Test
+    public void jiulegou1() {
+        newUser();
+        modifyUser();
+        newOrder();
+        modifyOrder();
+        sendOrder();
+        searchOrder();
+        payOrder();
+    }
 
 	/**
 	 * Request
@@ -72,7 +83,7 @@ public class TestJiulegouAPI {
 	 */
 	@Test(enabled = true)
 	public void newUser() {
-		String url = "http://101.200.216.228:9000/user/add";
+		String url = "http://uc.uat.idanlu.com/user/add";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("user_name", "testjlg" + currenTime()));
 		formdata.add(new BasicNameValuePair("terminal_location", "CHNP035C345D2998"));
@@ -108,7 +119,7 @@ public class TestJiulegouAPI {
 	 */
 	@Test(dependsOnMethods = "newUser")
 	public void modifyUser() {
-		String url = "http://101.200.216.228:9000/user/modify";
+		String url = "http://uc.uat.idanlu.com/user/modify";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("user_name", "testjlg01"+ currenTime()));
 		formdata.add(new BasicNameValuePair("terminal_location", "CHNP035C345D2998"));
@@ -147,7 +158,7 @@ public class TestJiulegouAPI {
 	 */
 	@Test(dependsOnMethods = "modifyUser")
 	public void newOrder() {
-		String url = "http://101.200.157.232:9000/order/add";
+		String url = "http://tc.uat.idanlu.com/order/add";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("third_order_no", currenTime()));
 		formdata.add(new BasicNameValuePair("pay_type", "2"));
@@ -183,7 +194,7 @@ public class TestJiulegouAPI {
 	 */
 	@Test(dependsOnMethods = "newOrder")
 	public void modifyOrder() {
-		String url = "http://101.200.157.232:9000/order/modify";
+		String url = "http://tc.uat.idanlu.com/order/modify";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("order_no", fileRead()));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
@@ -213,7 +224,7 @@ public class TestJiulegouAPI {
 	 */
 	@Test(dependsOnMethods = "modifyOrder")
 	public void sendOrder() {
-		String url = "http://101.200.157.232:9000/order/send";
+		String url = "http://tc.uat.idanlu.com/order/send";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("order_no", fileRead()));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
@@ -242,7 +253,7 @@ public class TestJiulegouAPI {
 	 */
 	@Test(dependsOnMethods = "sendOrder")
 	public void cancelOrder() {
-		String url = "http://101.200.157.232:9000/order/cancel";
+		String url = "http://tc.uat.idanlu.com/order/cancel";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("order_no", fileRead()));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
@@ -250,7 +261,29 @@ public class TestJiulegouAPI {
 		Map<String, String> res = getResponse(url, formdata);
 		Assert.assertEquals(res.get("result_desc"), "", "修改订单失败");
 	}
-
+    
+    @Test(dependsOnMethods = "sendOrder")
+	public void searchOrder() {
+        String url = "http://192.168.30.229:9001/searchPayOrder";
+        List<NameValuePair> formdata = new ArrayList<NameValuePair>();
+		formdata.add(new BasicNameValuePair("orderNo", fileRead()));
+		formdata.add(new BasicNameValuePair("url", "http://pc.uat.idanlu.com"));
+		Map<String, String> res = getResponse(url, formdata);
+		Assert.assertEquals(res.get("返回码"), "处理成功", "查询支付单失败");     
+    }
+    
+    @Test(dependsOnMethods = "searchOrder")
+	public void payOrder() {
+        String url = "http://192.168.30.229:9001/payResult";
+        List<NameValuePair> formdata = new ArrayList<NameValuePair>();
+		formdata.add(new BasicNameValuePair("orderNo", fileRead()));
+		formdata.add(new BasicNameValuePair("url", "http://pc.uat.idanlu.com"));
+        formdata.add(new BasicNameValuePair("cardType", "01"));
+		Map<String, String> res = getResponse(url, formdata);
+		Assert.assertEquals(res.get("返回码"), "处理成功", "查询支付单失败");     
+    }
+    
+    
 	/**
 	 * 
 	 * clean test data.
