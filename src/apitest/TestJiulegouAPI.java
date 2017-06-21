@@ -35,44 +35,47 @@ import com.alibaba.fastjson.JSON;
 public class TestJiulegouAPI {
 
 	String filePath = "userorder.txt";
+	String uc = "http://uc.uat.idanlu.com";
+	String tc = "http://tc.uat.idanlu.com";
+	String umpay = "http://192.168.30.229:9001";
 
 	@BeforeSuite
 	public void initTestData() {
 
 	}
-    
-    @Test
-    public void jiulegou() {
-        newUser();
-        modifyUser();
-        newOrder();
-        modifyOrder();
-        sendOrder();
-        cancelOrder();
-    }
+
+	@Test
+	public void jiulegou() {
+		newUser();
+		modifyUser();
+		newOrder();
+		modifyOrder();
+		sendOrder();
+		cancelOrder();
+	}
+
+	@Test
+	public void jiulegou1() {
+		newUser();
+		modifyUser();
+		newOrder();
+		modifyOrder();
+		sendOrder();
+		searchOrder();
+		payOrder();
+	}
 
 	/**
-	 * Request
-	 * user_name:
-	 * terminal_location:CHNP035C345D2998
-	 * terminal_address:
-	 * terminal_name: store_type:S011
-	 * business_license_code:
-	 * mer_id:99999999
+	 * Request user_name: terminal_location:CHNP035C345D2998 terminal_address:
+	 * terminal_name: store_type:S011 business_license_code: mer_id:99999999
 	 * 
-	 * Response
-	 * {
-		  "req_no": null,
-		  "result_desc": "新增丹露用户成功",
-		  "mer_id": "99999999",
-		  "charset": null,
-		  "user_id": "b49a46df69b543eba74f6a95f6a42e94",
-		  "reserved": null
-		}
+	 * Response { "req_no": null, "result_desc": "新增丹露用户成功", "mer_id":
+	 * "99999999", "charset": null, "user_id":
+	 * "b49a46df69b543eba74f6a95f6a42e94", "reserved": null }
 	 */
 	@Test(enabled = true)
 	public void newUser() {
-		String url = "http://101.200.216.228:9000/user/add";
+		String url = uc + "/user/add";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("user_name", "testjlg" + currenTime()));
 		formdata.add(new BasicNameValuePair("terminal_location", "CHNP035C345D2998"));
@@ -87,30 +90,19 @@ public class TestJiulegouAPI {
 	}
 
 	/**
-	 * Request
-	 * user_name:
-	 * terminal_location:CHNP035C345D2998
-	 * terminal_address:
-	 * terminal_name: store_type:S011
-	 * business_license_code:
-	 * mer_id:99999999
+	 * Request user_name: terminal_location:CHNP035C345D2998 terminal_address:
+	 * terminal_name: store_type:S011 business_license_code: mer_id:99999999
 	 * user_id
 	 * 
-	 * Response
-	 * {
-		  "req_no": null,
-		  "result_desc": "修改丹露用户成功",
-		  "mer_id": "99999999",
-		  "charset": null,
-		  "user_id": "79076259d8d24d8b8fa63c0e7708bef4",
-		  "reserved": null
-		}
+	 * Response { "req_no": null, "result_desc": "修改丹露用户成功", "mer_id":
+	 * "99999999", "charset": null, "user_id":
+	 * "79076259d8d24d8b8fa63c0e7708bef4", "reserved": null }
 	 */
 	@Test(dependsOnMethods = "newUser")
 	public void modifyUser() {
-		String url = "http://101.200.216.228:9000/user/modify";
+		String url = uc + "/user/modify";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
-		formdata.add(new BasicNameValuePair("user_name", "testjlg01"+ currenTime()));
+		formdata.add(new BasicNameValuePair("user_name", "testjlg01" + currenTime()));
 		formdata.add(new BasicNameValuePair("terminal_location", "CHNP035C345D2998"));
 		formdata.add(new BasicNameValuePair("terminal_address", "changed!!!"));
 		formdata.add(new BasicNameValuePair("terminal_name", "changed!!!"));
@@ -123,31 +115,17 @@ public class TestJiulegouAPI {
 	}
 
 	/**
-	 * Request
-		third_order_no:1011233211234567
-		pay_type:2
-		order_amount:10000
-		buyer_id:(user_id)
-		receive_person:lyf
-		receive_tel:1300000000
-		receive_address:address
-		order_invoice:0
-		merchandise_info:
-		mer_id:99999999
-		req_no:741236985
+	 * Request third_order_no:1011233211234567 pay_type:2 order_amount:10000
+	 * buyer_id:(user_id) receive_person:lyf receive_tel:1300000000
+	 * receive_address:address order_invoice:0 merchandise_info: mer_id:99999999
+	 * req_no:741236985
 	 * 
-	 * Response
-	 * {
-		  "req_no": "741236985",
-		  "result_desc": "第三方订单号已关联订单",
-		  "mer_id": "99999999",
-		  "charset": "UTF-8",
-		  "order_no": ""
-		}
+	 * Response { "req_no": "741236985", "result_desc": "第三方订单号已关联订单", "mer_id":
+	 * "99999999", "charset": "UTF-8", "order_no": "" }
 	 */
 	@Test(dependsOnMethods = "modifyUser")
 	public void newOrder() {
-		String url = "http://101.200.157.232:9000/order/add";
+		String url = tc + "/order/add";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("third_order_no", currenTime()));
 		formdata.add(new BasicNameValuePair("pay_type", "2"));
@@ -157,7 +135,8 @@ public class TestJiulegouAPI {
 		formdata.add(new BasicNameValuePair("receive_tel", "13000000000"));
 		formdata.add(new BasicNameValuePair("receive_address:", "ADD"));
 		formdata.add(new BasicNameValuePair("order_invoice", "0"));
-		formdata.add(new BasicNameValuePair("merchandise_info", "[{\"merchandise_id\":\"e4bec19a23074046828b4bb893c907ea\",\"merchandise_num\":\"10\"}]"));
+		formdata.add(new BasicNameValuePair("merchandise_info",
+				"[{\"merchandise_id\":\"e4bec19a23074046828b4bb893c907ea\",\"merchandise_num\":\"10\"}]"));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
 		formdata.add(new BasicNameValuePair("req_no", "123456789"));
 		Map<String, String> res = getResponse(url, formdata);
@@ -166,24 +145,14 @@ public class TestJiulegouAPI {
 	}
 
 	/**
-	 * Request
-		order_no:
-		mer_id:99999999
-		req_no:
-		order_modify_amount:
+	 * Request order_no: mer_id:99999999 req_no: order_modify_amount:
 	 * 
-	 * Response
-	 * {
-		  "req_no": "741236985",
-		  "result_desc": "第三方订单号已关联订单",
-		  "mer_id": "99999999",
-		  "charset": "UTF-8",
-		  "order_no": ""
-		}
+	 * Response { "req_no": "741236985", "result_desc": "第三方订单号已关联订单", "mer_id":
+	 * "99999999", "charset": "UTF-8", "order_no": "" }
 	 */
 	@Test(dependsOnMethods = "newOrder")
 	public void modifyOrder() {
-		String url = "http://101.200.157.232:9000/order/modify";
+		String url = tc + "/order/modify";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("order_no", fileRead()));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
@@ -194,26 +163,16 @@ public class TestJiulegouAPI {
 	}
 
 	/**
-	 * Request
-		order_no:
-		mer_id:99999999
-		req_no:
-		notice_url:
+	 * Request order_no: mer_id:99999999 req_no: notice_url:
 	 * 
-	 * Response
-	 * {
-		  "req_no": "963214785",
-		  "result_desc": "订单状态异常或当前请求不适用该订单",
-		  "mer_id": "99999999",
-		  "charset": "UTF-8",
-		  "order_no": ""
-		}
+	 * Response { "req_no": "963214785", "result_desc": "订单状态异常或当前请求不适用该订单",
+	 * "mer_id": "99999999", "charset": "UTF-8", "order_no": "" }
 	 * 
 	 * 
 	 */
 	@Test(dependsOnMethods = "modifyOrder")
 	public void sendOrder() {
-		String url = "http://101.200.157.232:9000/order/send";
+		String url = tc + "/order/send";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("order_no", fileRead()));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
@@ -224,31 +183,43 @@ public class TestJiulegouAPI {
 	}
 
 	/**
-	 * Request
-		order_no:
-		mer_id:99999999
-		req_no:
+	 * Request order_no: mer_id:99999999 req_no:
 	 * 
-	 * Response
-	 * {
-		  "req_no": "741236985",
-		  "result_desc": "",
-		  "mer_id": "99999999",
-		  "charset": "UTF-8",
-		  "order_no": "10783411540003"
-		}
+	 * Response { "req_no": "741236985", "result_desc": "", "mer_id":
+	 * "99999999", "charset": "UTF-8", "order_no": "10783411540003" }
 	 * 
 	 * 
 	 */
 	@Test(dependsOnMethods = "sendOrder")
 	public void cancelOrder() {
-		String url = "http://101.200.157.232:9000/order/cancel";
+		String url = tc + "/order/cancel";
 		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
 		formdata.add(new BasicNameValuePair("order_no", fileRead()));
 		formdata.add(new BasicNameValuePair("mer_id", "99999999"));
 		formdata.add(new BasicNameValuePair("req_no", "10000001"));
 		Map<String, String> res = getResponse(url, formdata);
 		Assert.assertEquals(res.get("result_desc"), "", "修改订单失败");
+	}
+
+	@Test(dependsOnMethods = "sendOrder")
+	public void searchOrder() {
+		String url = umpay + "/searchPayOrder";
+		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
+		formdata.add(new BasicNameValuePair("orderNo", fileRead()));
+		formdata.add(new BasicNameValuePair("url", "http://pc.uat.idanlu.com"));
+		String res = getResponseString(url, formdata);
+		Assert.assertTrue(res.contains("处理成功"), "查支付单失败");
+	}
+
+	@Test(dependsOnMethods = "searchOrder")
+	public void payOrder() {
+		String url = umpay + "/payResult";
+		List<NameValuePair> formdata = new ArrayList<NameValuePair>();
+		formdata.add(new BasicNameValuePair("orderNo", fileRead()));
+		formdata.add(new BasicNameValuePair("url", "http://pc.uat.idanlu.com"));
+		formdata.add(new BasicNameValuePair("cardType", "01"));
+		String res = getResponseString(url, formdata);
+		Assert.assertTrue(res.contains("00"), "支付订单失败");
 	}
 
 	/**
@@ -271,7 +242,7 @@ public class TestJiulegouAPI {
 			httppost.setEntity(uefEntity);
 			System.out.println("Executing request: " + httppost.getURI());
 			System.out.println("Request Payload: " + formdata);
-			CloseableHttpResponse response = httpclient.execute(httppost);		
+			CloseableHttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
 			String str = EntityUtils.toString(entity, "UTF-8");
 			System.out.println("Response JSON String is: " + str);
@@ -294,6 +265,40 @@ public class TestJiulegouAPI {
 			}
 		}
 
+		System.out.println("");
+		return null;
+	}
+
+	public String getResponseString(String url, List<NameValuePair> formdata) {
+		// 创建默认的httpClient实例.
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		// 创建httppost
+		HttpPost httppost = new HttpPost(url);
+		UrlEncodedFormEntity uefEntity;
+		try {
+			uefEntity = new UrlEncodedFormEntity(formdata, "UTF-8");
+			httppost.setEntity(uefEntity);
+			System.out.println("Executing request: " + httppost.getURI());
+			System.out.println("Request Payload: " + formdata);
+			CloseableHttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			String str = EntityUtils.toString(entity, "UTF-8");
+			System.out.println("Response String is: " + str);
+			return str;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// 关闭连接,释放资源
+			try {
+				httpclient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		System.out.println("");
 		return null;
 	}
@@ -334,7 +339,7 @@ public class TestJiulegouAPI {
 			FileInputStream is = new FileInputStream(filePath);
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader reader = new BufferedReader(isr);
-			
+
 			String line;
 			StringBuilder stringBuilder = new StringBuilder();
 			while ((line = reader.readLine()) != null) {
