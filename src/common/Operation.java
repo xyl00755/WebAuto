@@ -376,7 +376,9 @@ public class Operation {
 		sleep();
 		Set<String> winHandels = Browser.Driver.getWindowHandles();
 		List<String> it = new ArrayList<String>(winHandels);
-		Browser.Driver.switchTo().window(it.get(1));
+        //int index=Integer.parseInt(params.get("Window Index"));
+        System.out.println(it + ",switchTo:"+it.get(it.size()-1));
+		Browser.Driver.switchTo().window(it.get(it.size()-1));
 	}
 
 	/**
