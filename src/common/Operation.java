@@ -60,12 +60,13 @@ public class Operation {
 	 * @param params
 	 */
 	public void clickElement(HashMap<String, String> params) {
+		//System.out.println("Click element " + params.get("ID"));
+		System.out.println("Click element " + params);
 		WebElement element = Elements.find(params, Browser.Driver);
         WebDriverWait wait = new WebDriverWait(Browser.Driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		element.click();
         sleep();
-		System.out.println("Click element " + params.get("ID"));
 	}
 
 	/**
